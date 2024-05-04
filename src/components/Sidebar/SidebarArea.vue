@@ -43,7 +43,10 @@ const menuGroups = ref([
                   />
                 </svg>`,
         label: 'Datos de datos.gov',
-        route: '/estudiantes-inscritos'
+        route: '#',
+        children: [
+          { label: 'Listado', route: '/estudiantes-inscritos' }
+        ]
       },
     ]
   }
