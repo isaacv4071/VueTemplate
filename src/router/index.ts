@@ -14,12 +14,21 @@ import AlertsView from '@/views/UiElements/AlertsView.vue';
 import ButtonsView from '@/views/UiElements/ButtonsView.vue';
 
 import datosGov from '@/views/Diplomado/datosGov.vue';
-
+import Inicio from '@/views/Diplomado/Inicio.vue';
+import Charts from '@/views/Diplomado/Charts.vue';
 
 // Rutas de las páginas de Socrata y datos.gov
 const routes = [
 
   //RUTAS DEL TEMPLATE
+  {
+    path: '/',
+    name: 'Inicio',
+    component: Inicio,
+    meta: {
+      title: 'Página de inicio de aspirantes'
+    }
+  },
   {
     path: '/estudiantes-inscritos',
     name: 'estudiantes inscritos',
@@ -28,6 +37,15 @@ const routes = [
       title: 'Aspirantes Inscritos Facultad/Programa/Genero/Estrato de 2015-1 a 2021-1'
     }
   },
+  {
+    path: '/estudiantes-charts',
+    name: 'Charts',
+    component: Charts,
+    meta: {
+      title: 'ESTADÍSTICAS Y FILTROS DE ASPIRANTES'
+    }
+  },
+  // SECCIÓN DE DIRECCIONES DE TEMPLATE
   {
     path: '/calendar',
     name: 'calendar',

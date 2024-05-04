@@ -45,7 +45,8 @@ const menuGroups = ref([
         label: 'Datos de datos.gov',
         route: '#',
         children: [
-          { label: 'Listado', route: '/estudiantes-inscritos' }
+          { label: 'Listado', route: '/estudiantes-inscritos' },
+          { label: 'Estadísticas y Filtros', route: '/estudiantes-charts' }
         ]
       },
     ]
@@ -64,7 +65,7 @@ const menuGroups = ref([
   >
     <!-- SIDEBAR HEADER -->
     <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-      <router-link to="/estudiantes-inscritos">
+      <router-link to="/">
         Actividad Desarrollo Datos
       </router-link>
 
