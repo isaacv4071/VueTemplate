@@ -1,25 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import SigninView from '@/views/Authentication/SigninView.vue'
-import SignupView from '@/views/Authentication/SignupView.vue'
-import CalendarView from '@/views/CalendarView.vue'
-import BasicChartView from '@/views/Charts/BasicChartView.vue'
-import ECommerceView from '@/views/Dashboard/ECommerceView.vue'
-import FormElementsView from '@/views/Forms/FormElementsView.vue'
-import FormLayoutView from '@/views/Forms/FormLayoutView.vue'
-import SettingsView from '@/views/Pages/SettingsView.vue'
-import ProfileView from '@/views/ProfileView.vue'
-import TablesView from '@/views/TablesView.vue'
-import AlertsView from '@/views/UiElements/AlertsView.vue'
-import ButtonsView from '@/views/UiElements/ButtonsView.vue'
+import SigninView from '@/views/Authentication/SigninView.vue';
+import SignupView from '@/views/Authentication/SignupView.vue';
+import CalendarView from '@/views/CalendarView.vue';
+import BasicChartView from '@/views/Charts/BasicChartView.vue';
+import ECommerceView from '@/views/Dashboard/ECommerceView.vue';
+import FormElementsView from '@/views/Forms/FormElementsView.vue';
+import FormLayoutView from '@/views/Forms/FormLayoutView.vue';
+import SettingsView from '@/views/Pages/SettingsView.vue';
+import ProfileView from '@/views/ProfileView.vue';
+import TablesView from '@/views/TablesView.vue';
+import AlertsView from '@/views/UiElements/AlertsView.vue';
+import ButtonsView from '@/views/UiElements/ButtonsView.vue';
 
+import datosGov from '@/views/Diplomado/datosGov.vue';
+
+
+// Rutas de las páginas de Socrata y datos.gov
 const routes = [
+
+  //RUTAS DEL TEMPLATE
   {
-    path: '/',
-    name: 'eCommerce',
-    component: ECommerceView,
+    path: '/estudiantes-inscritos',
+    name: 'estudiantes inscritos',
+    component: datosGov,
     meta: {
-      title: 'eCommerce Dashboard'
+      title: 'Aspirantes Inscritos Facultad/Programa/Genero/Estrato de 2015-1 a 2021-1'
     }
   },
   {

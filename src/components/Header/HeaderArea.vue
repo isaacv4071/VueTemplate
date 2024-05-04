@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useSidebarStore } from '@/stores/sidebar'
 import DarkModeSwitcher from './DarkModeSwitcher.vue'
-import DropdownMessage from './DropdownMessage.vue'
-import DropdownNotification from './DropdownNotification.vue'
-import DropdownUser from './DropdownUser.vue'
 
 const { isSidebarOpen, toggleSidebar } = useSidebarStore()
 </script>
@@ -85,7 +82,7 @@ const { isSidebarOpen, toggleSidebar } = useSidebarStore()
 
             <input
               type="text"
-              placeholder="Type to search..."
+              placeholder="Buscar..."
               class="w-full xl:w-125 bg-transparent pr-4 pl-9 focus:outline-none"
             />
           </div>
@@ -99,19 +96,7 @@ const { isSidebarOpen, toggleSidebar } = useSidebarStore()
             <DarkModeSwitcher />
             <!-- Dark Mode Toggler -->
           </li>
-
-          <!-- Notification Menu Area -->
-          <DropdownNotification />
-          <!-- Notification Menu Area -->
-
-          <!-- Chat Notification Area -->
-          <DropdownMessage />
-          <!-- Chat Notification Area -->
         </ul>
-
-        <!-- User Area -->
-        <DropdownUser />
-        <!-- User Area -->
       </div>
     </div>
   </header>
