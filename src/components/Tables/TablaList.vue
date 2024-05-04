@@ -2,12 +2,13 @@
 import { onMounted } from 'vue'
 import axios from 'axios'
 import { ref } from 'vue'
+import { apiUrl } from '@/config/apiConfig.js' //Importa la URL de la API
 
 const listado = ref([])
 
 onMounted(() => {
   axios
-    .get('https://www.datos.gov.co/resource/r86y-229a.json')
+    .get(apiUrl)
     .then(function (response) {
       // manejar respuesta exitosa
 
