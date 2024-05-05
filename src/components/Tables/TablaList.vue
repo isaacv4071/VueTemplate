@@ -10,6 +10,12 @@ const periodos = ref([])
 const facultades = ref([])
 const programas = ref([])
 
+const filters = ref({
+  programa: '',
+  periodo: '',
+  facultad: '',
+})
+
 //Realizar la solicitud HTTP y manejar la respuesta
 const fetchDta = () => {
   axios
@@ -42,6 +48,31 @@ const fetchDta = () => {
     })
 }
 
+function filtrado() {
+  let concat = false;
+  if (filters.value.facultad === '' && filters.value.periodo === '' && filters.value.programa === '') {
+    fetchDta()
+    return;
+  }
+  let queryParam = "?"
+  if (filters.value.periodo !== '') {
+    concat = true
+    queryParam += `periodo=${filters.value.periodo}`
+  }
+  if (filters.value.facultad !== '') {
+    queryParam += (concat) ? `&facultad=${filters.value.facultad}` : `facultad=${filters.value.facultad}`
+    concat = true;
+  }
+  if (filters.value.programa !== '') {
+    queryParam += (concat) ? `&programa=${filters.value.programa}` : `programa=${filters.value.programa}`
+    concat = true;
+  }
+
+  axios.get(`${apiUrl}/${queryParam}`).then((response) => {
+    listado.value = response.data
+  })
+}
+
 //Se ejecuta el fetchData cuando se monta el componente
 onMounted(fetchDta)
 </script>
@@ -62,10 +93,11 @@ onMounted(fetchDta)
           <select
             id="periodo"
             class="dark:bg-form-input bg-gray-50 border border-stroke text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="filters.periodo"
           >
-            <option disabled selected>Período</option>
+            <option selected value="">Período</option>
             <!-- Se itera sobre los periodos únicos y se muestran -->
-            <option v-for="periodo in periodos" value="periodo">{{ periodo }}</option>
+            <option v-for="periodo in periodos" :value="periodo">{{ periodo }}</option>
           </select>
         </form>
       </div>
@@ -78,10 +110,11 @@ onMounted(fetchDta)
           <select
             id="facultad"
             class="dark:bg-form-input bg-gray-50 border border-stroke text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="filters.facultad"
           >
-            <option disabled selected>Facultad</option>
+            <option selected value="">Facultad</option>
             <!-- Se itera sobre las facultades únicas y se muestran -->
-            <option v-for="facultad in facultades" value="facultad">{{ facultad }}</option>
+            <option v-for="facultad in facultades" :value="facultad">{{ facultad }}</option>
           </select>
         </form>
       </div>
@@ -94,10 +127,11 @@ onMounted(fetchDta)
           <select
             id="programa"
             class="dark:bg-form-input bg-gray-50 border border-stroke text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            v-model="filters.programa"
           >
-            <option disabled selected>Programa</option>
+            <option selected value="">Programa</option>
             <!-- Se itera sobre los programas únicos y se muestran -->
-            <option v-for="programa in programas" value="programa">{{ programa }}</option>
+            <option v-for="programa in programas" :value="programa">{{ programa }}</option>
           </select>
         </form>
       </div>
@@ -106,6 +140,7 @@ onMounted(fetchDta)
         <button
           type="button"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-80 mt-8"
+          @click="filtrado"
         >
           Buscar
         </button>

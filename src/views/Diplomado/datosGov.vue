@@ -1,7 +1,7 @@
 <script setup>
 import TablaList from '@/components/Tables/TablaList.vue'
-import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
-import DefaultLayout from '@/layouts/DefaultLayout.vue'
+  import BreadcrumbDefault from '@/components/Breadcrumbs/BreadcrumbDefault.vue'
+  import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 import { ref } from 'vue'
 
